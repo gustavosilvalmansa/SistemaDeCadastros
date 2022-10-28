@@ -14,6 +14,8 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
 ?>
 
 		  <div class="col-sm-12">
+      <center>  <h1 class="m-3"> Documentos assinados </h1></center>
+
 			<!--Conteudo -->
 			 <table id="example1" class="table table-bordered table-striped">
                   <thead>
@@ -29,15 +31,6 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
                   <tr>
                     <td>Trident</td>
                     <td>Internet
-                      Explorer 4.0
-                    </td>
-                    <td>Win 95+</td>
-                    <td> 4</td>
-                    <td>X</td>
-                  </tr>
-                  <tr>
-                    <td>Trident</td>
-                    <td>Internet
                       Explorer 5.0
                     </td>
                     <td>Win 95+</td>
@@ -45,15 +38,6 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
                     <td>C</td>
                   </tr>
                   </tbody>
-                  <tfoot>
-                  <tr>
-                    <th>Rendering engine</th>
-                    <th>Browser</th>
-                    <th>Platform(s)</th>
-                    <th>Engine version</th>
-                    <th>CSS grade</th>
-                  </tr>
-                  </tfoot>
                 </table>
 			<!-- Fim Conteudo -->
           </div>

@@ -21,15 +21,11 @@ CONSTRAINT FK_usuarios_certificados FOREIGN KEY (idcertificado)
 		REFERENCES tb_certificados (idcertificado)
 );
 
-CREATE TABLE tb_documentosassinados (
+CREATE TABLE tb_documentospendentes (
 	iddocumento INT NOT NULL AUTO_INCREMENT,
     desnome VARCHAR(100),
     desdescricao VARCHAR(100),
-    desmotivo VARCHAR(100),
-    boolicp ENUM("1","0"),
-    descaminho VARCHAR(100),
-    dtassinatura DATE DEFAULT(current_time()),
-	CONSTRAINT PK_documentospendentes PRIMARY KEY (iddocumento)
+    
 );
 
 INSERT INTO tb_certificados (desnome,dessenhacertificado,descaminho) VALUES ("certificado.p12","$2y$10$iHgpM0YdXofeA9TcJKu1oeCl1xk9TtyMdtt7FejG60BtFD1l/da9y","/certificados/86521551000/certificado.p12" );
