@@ -12,7 +12,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
     include 'templates/header.php';
 
 ?>
-
+  <div class="container">
 		  <div class="col-sm-12">
 		    <center>  <h1 class="m-3"> Assinar Documento </h1></center>
 			<!--Conteudo -->
@@ -42,7 +42,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
                     <input type="text" class="form-control" id="exampleInputEmail1" name="motivo" placeholder="Concordo com o conteudo do documento" required>
                   </div>
                   <div class="form-group">
-                    <label for="inputDoc" class="form-label"> Protocolo PDF <span style="color:red; font-weight:bold" >*</span></label>
+                    <label for="inputDoc" class="form-label"> Protocolo PDF <span style="color:red; font-weight:bold" ></span></label>
                     <input type="file" class="form-control"  accept="application/pdf" id="arquivo" name="arquivo" required>                    
                   </div>
 				  <div class="form-check">
@@ -62,6 +62,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
             <!-- /.card -->
 			<!-- Fim Conteudo -->
           </div>
+    </div>
  <?php
  include 'templates/footer.php';
  ?>

@@ -14,8 +14,8 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
     $stmt = $pdo->prepare($sql);
     $stmt->execute();
 ?>
-
-		  <div class="col-md-12">
+  
+		  <div class="col-md-12 p-5">
       <center>  <h1 class="m-3"> Documentos assinados </h1></center>
 
 			<!--Conteudo -->
