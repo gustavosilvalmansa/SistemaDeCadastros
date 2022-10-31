@@ -16,17 +16,21 @@ $descNome = $_POST['descNome'];
 $motivo = $_POST['motivo'];
 //$arquivo = $_POST[''];
 $icp = $_POST['icp'];
+$data = date("Y-m-d");
 
-
-$stmt = $pdo->prepare("INSERT INTO tb_documentosassinados (desnome, desdescricao, desmotivo,boolicp)
-VALUES (:desnome, :desdescricao, :desmotivo, :boolicp)");
-$stmt->execute(array(
+$stmt = $pdo->prepare("INSERT INTO tb_documentosassinados (desnome, desdescricao, desmotivo,boolicp,dtassinatura)
+VALUES (:desnome, :desdescricao, :desmotivo, :boolicp, :dtassinatura)");
+$insert = $stmt->execute(array(
     ':desnome' => $docNome,
     ':desdescricao' => $descNome,
     ':desmotivo' => $motivo,
-    ':boolicp' => $icp
+    ':boolicp' => $icp,
+    ':dtassinatura'=>$data
   ));
-header("location: assinarDocumento.php");
+      if($insert){
+          echo "<script>alert('Documento assinado!')</script>";
+          header("location: meusAssinados.php");
 
+      }
 
 ?>
