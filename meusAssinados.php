@@ -15,7 +15,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
     $stmt->execute();
 ?>
 
-		  <div class="col-sm-12">
+		  <div class="col-md-12">
       <center>  <h1 class="m-3"> Documentos assinados </h1></center>
 
 			<!--Conteudo -->
@@ -39,15 +39,16 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
                         // Creating new date format from that timestamp
                          $new_date = date("d/m/Y", $timestamp);
 
-                        $teste = ' <a href="#"><i style="color: #000;" class="fas fa-eye fa-md"></i></a>';
-                         
+                        $visualizar = ' <a href="#"><i style="color: #000;" class="fas fa-eye fa-md"></i></a>';
+                        $mail = ' <a href="#"><i style="color: #000;" class="fas fa-envelope fa-md"></i></a>';
+
                     echo "<tr>" .
                           "<td>" . $row["iddocumento"] . "</td>" .
                           "<td>" . $row["desnome"] . "</td>" .
                           "<td>" . $row["desmotivo"] . "</td>" .
                           "<td>" . $row["boolicp"] . "</td>" .
                           "<td>" . $new_date . "</td>" .
-                          "<td>" . $teste . "</td>" .
+                          "<td>" . $visualizar . $mail . "</td>" .
                           "</tr>";
                     }
                   ?>

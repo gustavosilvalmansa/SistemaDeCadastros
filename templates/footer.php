@@ -1,4 +1,4 @@
- </div>
+ 
         <!-- /.row -->
       </div><!-- /.container-fluid -->
     </div>
@@ -18,6 +18,7 @@
 <!-- ./wrapper -->
 
 <!-- REQUIRED SCRIPTS -->
+<script src="plugins/bs-custom-file-input/bs-custom-file-input.js"></script>
 
 <!-- jQuery -->
 <script src="plugins/jquery/jquery.min.js"></script>
@@ -39,23 +40,21 @@
 <script src="plugins/datatables-buttons/js/buttons.html5.min.js"></script>
 <script src="plugins/datatables-buttons/js/buttons.print.min.js"></script>
 <script src="plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
+<script src="plugins/toastr/toastr.min.js"></script>
 
+<?php
+if($_GET['assinado']){
+  echo "<script type='text/javascript'>toastr.success('Assinado com sucesso!')</script>";
+ // toastr.success('Lorem ipsum dolor sit amet, consetetur sadipscing elitr.')
+
+}?>
 <!-- Page specific script -->
 <script>
   $(function () {
     $("#example1").DataTable({
       "responsive": true, "lengthChange": false, "autoWidth": false,
       "buttons": ["copy","excel", "pdf", "print", "colvis"]
-    }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
-    $('#example2').DataTable({
-      "paging": true,
-      "lengthChange": false,
-      "searching": true,
-      "ordering": true,
-      "info": true,
-      "autoWidth": false,
-      "responsive": true,
-    });
+    }).buttons().container().appendTo('#example1_wrapper .col-md-12:eq(0)');
   });
 </script>
 </body>

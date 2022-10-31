@@ -14,7 +14,9 @@ $email = $_POST['email'];
 $docNome = $_POST['docNome'];
 $descNome = $_POST['descNome'];
 $motivo = $_POST['motivo'];
-//$arquivo = $_POST[''];
+$arquivo = $_FILES['arquivo'];
+print_r($arquivo);
+die;
 $icp = $_POST['icp'];
 $data = date("Y-m-d");
 
@@ -27,10 +29,9 @@ $insert = $stmt->execute(array(
     ':boolicp' => $icp,
     ':dtassinatura'=>$data
   ));
-      if($insert){
-          echo "<script>alert('Documento assinado!')</script>";
-          header("location: meusAssinados.php");
-
-      }
+  
+if($insert){
+    header("location: meusAssinados.php?tstr=1");
+ }
 
 ?>

@@ -23,7 +23,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
               </div>
               <!-- /.card-header -->
               <!-- form start -->
-              <form action="salvarAssinatura.php" method="POST">
+              <form action="salvarAssinatura.php" enctype="multipart/form-data" method="POST">
                 <div class="card-body">
                   <div class="form-group">
                     <label for="exampleInputEmail1">Email</label>
@@ -42,14 +42,8 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
                     <input type="text" class="form-control" id="exampleInputEmail1" name="motivo" placeholder="Concordo com o conteudo do documento" required>
                   </div>
                   <div class="form-group">
-                    <label for="exampleInputFile">Arquivo</label>
-                    <div class="input-group">
-                      <div class="custom-file">
-                        <input type="file" name="arquivo" class="custom-file-input" id="exampleInputFile" required>
-                        <label class="custom-file-label" for="exampleInputFile">Selecione um PDF</label>
-                      </div>
-                      
-                    </div>
+                    <label for="inputDoc" class="form-label"> Protocolo PDF <span style="color:red; font-weight:bold" >*</span></label>
+                    <input type="file" class="form-control"  accept="application/pdf" id="arquivo" name="arquivo" required>                    
                   </div>
 				  <div class="form-check">
                     <input type="checkbox" class="form-check-input" name="icp" id="exampleCheck1">
