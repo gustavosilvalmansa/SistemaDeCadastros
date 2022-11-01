@@ -1,7 +1,6 @@
 <?php
 // Inicialize a sessão
 session_start();
- print_r($_SESSION);
 // Verifique se o usuário já está logado, em caso afirmativo, redirecione-o para a página de boas-vindas
 if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
     header("location: home.php");
@@ -102,38 +101,38 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
   </head>
   <body>
-<div class="login-wrap">
-	<div class="login-html">
-		<div class="login-form">
-			<div class="sign-in-htm">
-			    <div class="group">
+    <div class="login-wrap">
+        <div class="login-html">
+            <div class="login-form">
+                <div class="sign-in-htm">
+                    <div class="group">
+                        <center><img src="dist/img/webpki.png"  style="max-height: 250px;" class="img-fluid " alt=""/></center>
+                    </div> 
 
-   <center>     <img src="dist/img/webpki.png"  style="max-height: 250px;" class="img-fluid " alt=""/> </center>
-        </div> 
-                            <form id="login" name="login" method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" >
+                    <form id="login" name="login" method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" >
 
-				<div class="group"  style="margin-top:-50px;">
-					<label for="user" class="label">Usuário</label>
-                   <input type="text" id="username" name="username" class="input" placeholder="" required />
-				</div>
-				<div class="group">
-					<label for="pass" class="label">Senha</label>
-           <input id="senha"  name="password" type="password" class="input" style="font-color:white" placeholder="" required  />
-				</div>
-			
+                        <div class="group"  style="margin-top:-50px;">
+                            <label for="user" class="label">Usuário</label>
+                            <input type="text" id="username" name="username" class="input" placeholder="" required />
+                        </div>
 
-				
-				<div class="group" >
-                      <input type="submit" class="button"  value="Login"/>
-                 <center>    </center>
-                      			</form>
+                        <div class="group">
+                            <label for="pass" class="label">Senha</label>
+                            <input id="senha"  name="password" type="password" class="input" style="font-color:white" placeholder="" required  />
+                        </div>
+                    
 
-				</div>
-				<div class="foot-lnk">
-<img src="dist/img/invia_branco.png" style="max-width:150px; height:auto;"   alt="Selo do GOV"/>				
-</div>
-			</div>
-		
+                        
+                        <div class="group" >
+                            <input type="submit" class="button"  value="Login"/>
+                        </div>
+
+                    </form>
+
+                    <div class="foot-lnk">
+                        <img src="dist/img/invia_branco.png" style="max-width:150px; height:auto;"   alt="Selo do GOV"/>				
+                    </div>
+			    </div>
 			</div>
 		</div>
 	</div>

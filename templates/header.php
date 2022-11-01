@@ -9,6 +9,7 @@
   <link rel="stylesheet" href="plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
   <link rel="stylesheet" href="plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
   <link rel="stylesheet" href="plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
+  
   <!-- Toastr -->
   <link rel="stylesheet" href="plugins/toastr/toastr.min.css">
   <!-- Google Font: Source Sans Pro -->
@@ -21,11 +22,17 @@
 	.brand-image2 {
     margin-top: -.5rem;
     margin-right: .2rem;
-    height: 50px;
-	}
+    height: 50px;}
+
+  .shadows {
+    box-shadow: 0 0 1px rgb(0 0 0 / 13%), 0 1px 3px rgb(0 0 0 / 20%);
+    margin-bottom: 1rem;}
+
+.max-400{max-height:400px}
+
   </style>
 </head>
-<body class="hold-transition layout-top-nav">
+<body class="hold-transition layout-top-nav layout-navbar-fixed">
 <div class="wrapper">
 
   <!-- Navbar -->
@@ -66,7 +73,13 @@
               <li><a href="#" class="dropdown-item">Minhas assinaturas pendentes</a></li>
             </ul>
           </li>
-        
+          <li class="nav-item dropdown">
+            <a id="dropdownSubMenu1" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link dropdown-toggle">Institucional</a>
+            <ul aria-labelledby="dropdownSubMenu1" class="dropdown-menu border-0 shadow">
+              <li><a href="#" class="dropdown-item">Suporte técnico </a></li>
+              <li><a href="solucoesInvia.php" class="dropdown-item">Nossos produtos</a></li>
+            </ul>
+          </li>
         </ul>
 
         <!-- SEARCH FORM -->
