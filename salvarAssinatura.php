@@ -1,6 +1,7 @@
 <?php
 error_reporting(E_ALL);
 ini_set("display_errors", 0);
+
 // Inicialize a sessão
 session_start();
  
@@ -66,14 +67,6 @@ if (@file_exists(dirname(__FILE__).'/lang/por.php')) {
 	$pdf->setLanguageArray($l);
 }
 
-// ---------------------------------------------------------
-
-/*
-NOTES:
- - To create self-signed signature: openssl req -x509 -nodes -days 365000 -newkey rsa:1024 -keyout tcpdf.crt -out tcpdf.crt
- - To export crt to p12: openssl pkcs12 -export -in tcpdf.crt -out tcpdf.p12
- - To convert pfx certificate to pem: openssl pkcs12 -in tcpdf.pfx -out tcpdf.crt -nodes
-*/
 $pdf->AddPage();
 $pages = $pdf->setSourceFile($source);
 $page = $pdf->ImportPage(1);
@@ -120,7 +113,7 @@ $info = array(
 	'ContactInfo' => 'invianf.com.br',
 	);
 
-// set document signature
+
 
 
 /* NÃO ICP
@@ -150,14 +143,16 @@ $pdf->Image('dist/img/selo.jpg', 180, 60, 15, 15, 'JPG');
 $pdf->setSignatureAppearance(180, 60, 15, 15);
 
 
+$cpf = $_SESSION['cpf'];
 $nome_do_arquivo = $name."_".date("Y.m.d_H_i_s").".pdf";
 $nomesemespaco = str_replace(" ", "", $nome_do_arquivo); 
-$localizacao = "/home/gusta037/public_html/webpki/$empresa/assinado";
+
+$localizacao = "/assinados/$cpf/meusAssinados";
 $salva_arquivo = $localizacao."/".$nomesemespaco;
-$doc_url = "https://invianf.com.br/webpki/$empresa/assinado/$nomesemespaco";
+$doc_url = "https://invianf.com.br/assinador/$cpf/assinado/$nomesemespaco";
 
 //Close and output PDF document
-$pdf->Output($salva_arquivo, 'I');
+$pdf->Output($salva_arquivo, 'F');
 
 $stmt = $pdo->prepare("INSERT INTO tb_documentosassinados (desnome, desdescricao, desmotivo,boolicp,descaminho, dtassinatura)
 VALUES (:desnome, :desdescricao, :desmotivo, :boolicp,:descaminho, :dtassinatura)");
@@ -171,7 +166,7 @@ $insert = $stmt->execute(array(
   ));
 
 if($insert){
-    //header("location: meusAssinados.php?assinado=1");
+    header("location: meusAssinados.php?assinado=1");
  }
 
 ?>

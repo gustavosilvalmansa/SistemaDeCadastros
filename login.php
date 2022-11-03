@@ -34,7 +34,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     // Validar credenciais
     if(empty($username_err) && empty($password_err)){
         // Prepare uma declaração selecionada
-        $sql = "SELECT idusuario, desusuario, dessenha FROM tb_usuarios WHERE desusuario = :username";
+        $sql = "SELECT idusuario, desusuario, dessenha, desnome, descpf, idcertificado FROM tb_usuarios WHERE desusuario = :username";
         
         if($stmt = $pdo->prepare($sql)){
             // Vincule as variáveis à instrução preparada como parâmetros
@@ -51,19 +51,22 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                         $id = $row["idusuario"];
                         $username = $row["desusuario"];
                         $hashed_password = $row["dessenha"];
+                        $descpf = $row["descpf"];
+                        $desnome = $row["desnome"];
+                        $idcertificado = $row["idcertificado"];
+
                         if(password_verify($password, $hashed_password)){
                             // A senha está correta, então inicie uma nova sessão
                             session_start();
                             
                             // Armazene dados em variáveis de sessão
-
                             $_SESSION["loggedin"] = true;
                             $_SESSION["id"] = $id;
                             $_SESSION["username"] = $username;                            
-                            $_SESSION["nomecompleto"] = $row["desnome"];                           
-                            $_SESSION["cpf"] = $row["descpf"];                     
-                            $_SESSION["idcertificado"] = $row["idcertificado"];
-                            
+                            $_SESSION["nomecompleto"] = $desnome;                           
+                            $_SESSION["descpf"] = $descpf;                     
+                            $_SESSION["idcertificado"] = $idcertificado;
+
                             // Redirecionar o usuário para a página de boas-vindas
                             header("location: home.php");
                         } else{

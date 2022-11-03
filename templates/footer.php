@@ -45,9 +45,8 @@
 <?php
 if($_GET['assinado']){
   echo "<script type='text/javascript'>toastr.success('Assinado com sucesso!')</script>";
- // toastr.success('Lorem ipsum dolor sit amet, consetetur sadipscing elitr.')
-
-}?>
+}
+?>
 <!-- Page specific script -->
 <script>
   $(function () {
