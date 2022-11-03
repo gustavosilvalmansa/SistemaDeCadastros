@@ -92,8 +92,16 @@
       <ul class="order-1 order-md-3 navbar-nav navbar-no-expand ml-auto">
         <!-- Messages Dropdown Menu -->
         <li class="nav-item dropdown">
-          <a class="nav-link" data-toggle="dropdown" href="#">
-            <i style="color:#ad1101" class="fas fa-sign-out-alt fa-md"> Sair</i>
+          <a class="nav-link"  href="home.php">
+            <i style="color:gray" class="fas fa-user"> Perfil</i>
+          </a>
+          <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
+           
+               
+			</li>
+      <li class="nav-item">
+          <a class="nav-link" href="sair.php">
+            <i style="color:#ad1101" class="fas fa-sign-out-alt fa-md">Sair</i>
           </a>
           <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
            

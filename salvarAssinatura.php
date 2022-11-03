@@ -80,29 +80,55 @@ $page = $pdf->ImportPage(1);
 $pdf->useTemplate( $page, 0, 0 );
 
 /*for ($i = 1; $i <= $pages; $i++) {
+
+    $pdf->AddPage();
+
     $pdf->importPage($i);
    
     $pdf->useTemplate($i);
 }
 */
+
 // set certificate file
-//$certificate = 'file://certificados/86521551000/cert.crt';
-//$chavepriv = 'file://certificados\86521551000\cert.key';
-$certificate ='file://'.realpath('certificados\86521551000\cert.crt');
-$chavepriv ='file://'.realpath('certificados\86521551000\cert.key');
+$certificate ="file://".realpath("certificados\86521551000\cert.crt");//Cert CRT
+$chavepriv ="file://".realpath("certificados\86521551000\cert.key"); //Private KEY
+$cert_store = file_get_contents('certificados\86521551000\certificado.p12'); //CERTIFICADO ICP PATH
+
+//Verifica se foi possivel ler o certificado
+if (!$cert_store ) {
+     echo "Error: Unable to read the cert file\n";
+     exit;
+}
+     
+//Pega dados do certificado
+if (openssl_pkcs12_read($cert_store, $cert_info, "123456")) {
+    //echo "Certificate Information\n"."<br>";
+    $cert = $cert_info["cert"];
+    $key = $cert_info["pkey"];
+    $chain = $cert_info["extracerts"];
+} else {
+    echo "Error: Unable to read the cert store.\n";
+    exit;
+}
 
 
 // set additional information
 $info = array(
-	'Name' => 'TCPDF',
-	'Location' => 'Office',
-	'Reason' => 'Testing TCPDF',
-	'ContactInfo' => 'http://www.tcpdf.org',
+	'Name' => $_SESSION['nomecompleto'],
+	'Location' => 'InviaSigner',
+	'Reason' => 'Comprovando autenticidade',
+	'ContactInfo' => 'invianf.com.br',
 	);
 
 // set document signature
-//$pdf->setSignature($certificate, $certificate, 'tcpdfdemo', '', 2, $info);
-$pdf->setSignature($certificate, $chavepriv, '123456', '', 2, $info, 'A'); //Assina PDF
+
+
+/* NÃO ICP
+$pdf->setSignature($certificate, $chavepriv, '123456', '', 2, '', 'A'); 
+*/
+
+//Assina  ICP PDF
+$pdf->setSignature($cert, $key, '123456', '', 2, '', 'A'); 
 
 // set font
 $pdf->SetFont('helvetica', '', 12);
@@ -118,13 +144,11 @@ $pdf->writeHTML($text, true, 0, true, 0);
 // *** set signature appearance ***
 
 // create content for signature (image and/or text)
-$pdf->Image('dist/img/selo.png', 180, 60, 15, 15, 'PNG');
+$pdf->Image('dist/img/selo.jpg', 180, 60, 15, 15, 'JPG');
 
 // define active area for signature appearance
 $pdf->setSignatureAppearance(180, 60, 15, 15);
 
-// *** set an empty signature appearance ***
-$pdf->addEmptySignatureAppearance(180, 80, 15, 15);
 
 $nome_do_arquivo = $name."_".date("Y.m.d_H_i_s").".pdf";
 $nomesemespaco = str_replace(" ", "", $nome_do_arquivo); 

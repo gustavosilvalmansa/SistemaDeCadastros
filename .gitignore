@@ -1,2 +1,5 @@
 /db/config.php
 AdminLTE-3.2.0
+certificado.p12
+cert.key
+cert.crt

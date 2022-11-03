@@ -56,9 +56,13 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                             session_start();
                             
                             // Armazene dados em variáveis de sessão
+
                             $_SESSION["loggedin"] = true;
                             $_SESSION["id"] = $id;
                             $_SESSION["username"] = $username;                            
+                            $_SESSION["nomecompleto"] = $row["desnome"];                           
+                            $_SESSION["cpf"] = $row["descpf"];                     
+                            $_SESSION["idcertificado"] = $row["idcertificado"];
                             
                             // Redirecionar o usuário para a página de boas-vindas
                             header("location: home.php");
